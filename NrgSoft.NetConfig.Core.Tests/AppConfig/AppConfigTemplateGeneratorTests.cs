@@ -1,17 +1,16 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace NrgSoft.NetConfig.Core.AppConfig
 {
-    [TestFixture]
     public class AppConfigTemplateGeneratorTests
     {
-        [Test]
+        [Fact]
         public void GenerateTemplateTest()
         {
             var generator = new AppConfigTemplateGenerator();
             var template = generator.GenerateTemplate<Configuration>();
 
-            Assert.AreEqual(TestData.XmlConfiguration, TestsHelper.GetPrintedXml(template));
+            Assert.Equal(TestData.XmlConfiguration, TestsHelper.GetPrintedXml(template));
         }
     }
 }
