@@ -11,18 +11,18 @@ namespace NrgSoft.NetConfig.Core.AppConfig
             var configurationReader = new AppConfigReader(TestData.ValidConfigurationValues);
             var configuration = configurationReader.ReadConfiguration<Configuration>();
 
-            Assert.Equal(configuration.Version, 2);
-            Assert.Equal(configuration.UsersCount, 100000000000000L);
-            Assert.Equal(configuration.Epsilon, 0.001d);
-            Assert.Equal(configuration.MinimumTransferAmount, 2.5555555555555M);
-            Assert.Equal(configuration.Revision, 'A');
-            Assert.Equal(configuration.CachingType, CachingType.Redis);
-            Assert.Equal(configuration.SiteName, "localhost");
-            Assert.Equal(configuration.Api.MainEndpoint, "/calculate");
-            Assert.Equal(configuration.Api.SessionLength, TimeSpan.FromMinutes(30));
-            Assert.Equal(configuration.Api.Authentication.Username, "Viktor");
-            Assert.Equal(configuration.Api.Authentication.PasswordExpires.ToUniversalTime(), new DateTime(2014, 6, 2, 22, 14, 0));
-            Assert.Equal(configuration.Api.Authentication.ShouldChangePassword, true);
+            Assert.Equal(2, configuration.Version);
+            Assert.Equal(100000000000000L, configuration.UsersCount);
+            Assert.Equal(0.001d, configuration.Epsilon);
+            Assert.Equal(2.5555555555555M, configuration.MinimumTransferAmount);
+            Assert.Equal('A', configuration.Revision);
+            Assert.Equal(CachingType.Redis, configuration.CachingType);
+            Assert.Equal("localhost", configuration.SiteName);
+            Assert.Equal("/calculate", configuration.Api.MainEndpoint);
+            Assert.Equal(TimeSpan.FromMinutes(30), configuration.Api.SessionLength);
+            Assert.Equal("Viktor", configuration.Api.Authentication.Username);
+            Assert.Equal(new DateTime(2014, 6, 2, 22, 14, 0), configuration.Api.Authentication.PasswordExpires.ToUniversalTime());
+            Assert.True(configuration.Api.Authentication.ShouldChangePassword);
         }
 
         [Fact]
